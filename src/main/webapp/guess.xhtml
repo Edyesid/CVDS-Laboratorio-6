@@ -11,37 +11,121 @@ and open the template in the editor.
       xmlns:f="http://java.sun.com/jsf/core">
     
     <style type="text/css">
+    
+    	* {
+			box-sizing: box;
+		}
+    	
   		body {
     		background-color: #ffdd90;
  			background-image: url("fondo.gif");
  		}
+ 		
+ 		h3 { color: #FF0000; }
+ 		
+		
+		/* Style the top navigation bar */
+		.topnav {
+		  overflow: hidden;
+		  background-color: #461c50;
+		}
+		
+		/* Style the topnav links */
+		.topnav a {
+		  float: left;
+		  display: block;
+		  color: #f2f2f2;
+		  text-align: center;
+		  padding: 14px 16px;
+		  text-decoration: none;
+		}
+		
+		/* Change color on hover */
+		.topnav a:hover {
+		  background-color: #ddd;
+		  color: black;
+		}
+		
+		/* Create three unequal columns that floats next to each other */
+		.column {
+		  float: left;
+		  padding: 10px;
+		}
+		
+		/* Left and right column */
+		.column.side {
+		  width: 25%;
+		}
+		
+		/* Middle column */
+		.column.middle {
+		  width: 50%;
+		}
+		
+		/* Clear floats after the columns */
+		.row:after {
+		  content: "";
+		  display: table;
+		  clear: both;
+		}
+		
+		/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+		@media screen and (max-width: 600px) {
+		  .column.side, .column.middle {
+		    width: 100%;
+		  }
+		}
   	</style>
 
+	 <div class="column middle">
+	 
 	<h:body>
-        <h:form id="guess_form">
+	
+		<div class="topnav">
+		  <a href="https://github.com/henryfes">Henry Sanchez</a>
+		  <a href="https://github.com/Edyesid">Edwin Rodriguez</a>
+		</div>
+		
+		<div class="row">
+		  <div class="column side">
+		   
+		  </div>
+		  
+		  <div class="column middle">
+		    <h:form id="guess_form">
             <p:messages id="kk" showDetail="true" autoUpdate="true" closable="true" globalOnly="true"/>
             <h3 style="display: none;">Numero De Verdad</h3>
             <p:outputLabel value="#{guessBean.numeroAdivinar}" style="display: none;"></p:outputLabel>
 
-            <h3>Numero para ganar!</h3>
-            <p:inputText type="number" name="numero" value="#{guessBean.intent}">
+            <h3> Numero para ganar!</h3>
+            <p:inputText type="number" name="numero" style="color: blue" value="#{guessBean.intent}">
                 <f:ajax />
             </p:inputText>
             <h3>Número de intentos</h3>
-            <p:outputLabel value="#{guessBean.intentos}"></p:outputLabel>
+            <p:outputLabel value="#{guessBean.intentos}" style="color: blue"></p:outputLabel>
             <h3>Estado</h3>
-            <p:outputLabel value="#{guessBean.estado}" id="estado"></p:outputLabel>
+            <p:outputLabel value="#{guessBean.estado}" id="estado" style="color: blue" />
             <h3>Premio Acumulado</h3>
-            <p:outputLabel value="#{guessBean.premioAcumulado}" id="premioAcumulado" ></p:outputLabel>
-            
+            <p:outputLabel value="#{guessBean.premioAcumulado}" id="premioAcumulado" style="color: blue" ></p:outputLabel>
             <h3></h3>
-            <p:commandButton value ="Adivinar" actionListener="#{guessBean.guess(guessBean.intent)}" update="guess_form" ></p:commandButton>
-            <p:commandButton value="Reiniciar"  actionListener="#{guessBean.reiniciar}" update="guess_form"></p:commandButton>
+            <p:commandButton value ="Adivinar" actionListener="#{guessBean.guess(guessBean.intent)}" update="guess_form" style="color: green"></p:commandButton>
+            <p:commandButton value="Reiniciar"  actionListener="#{guessBean.reiniciar}" update="guess_form" style="color: green"></p:commandButton>
             <p:dataTable var="listaIntentos" value="#{guessBean.numerosUsados}" style="width:150px;">
-                    <p:column headerText="Numeros ingresados">
-                            <h:outputText value= "#{listaIntentos}"/>
+                    <p:column headerText="Numeros ingresados" style="color: blue">
+                            <h:outputText value= "#{listaIntentos}" style="color: blue"/>
                     </p:column>
             </p:dataTable> 
         </h:form>
+		    
+		    
+		  </div>
+		  
+		  <div class="column side">
+		    
+		  </div>
+		</div>
+	
+
     </h:body>
+    </div>
 </html>
